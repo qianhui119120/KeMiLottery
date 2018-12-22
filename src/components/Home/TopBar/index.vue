@@ -1,6 +1,11 @@
 <template>
     <div id="TopBar">
-        <span>可米彩票</span>
+        <div class="logoBox">
+            <div>
+                <img src="../../../assets/logo.jpg" alt="">
+            </div>
+            <div>可米彩票</div>
+        </div>
         <el-button type="danger" size='mini' @click="loginOut">退出</el-button>
     </div>
 </template>
@@ -38,5 +43,22 @@ export default {
         align-items: center;
         padding: 0 20px;
         box-sizing: border-box;
+        .logoBox {
+            width: 200px;
+            height: 64px;
+            color: wheat;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            div {
+                flex: 1;
+                width: 100px;
+                height: 100%;
+                img {
+                    width: 85%;
+                }
+            }
+        }
     }
 </style>

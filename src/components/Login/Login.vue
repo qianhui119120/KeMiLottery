@@ -93,9 +93,11 @@ export default {
         //监听浏览器关闭动作,当前用户关闭浏览器或者标签页
         //如果rememberMe为true,则将数据保存到本地,否则清空
         this.rememberMe = localStorage.getItem('isRemember')==='true'?true:false;
-        // this.rememberMe = false;
+        
         window.onbeforeunload = (ev)=> {
-            if (!this.rememberMe) {
+            var ev = ev || window.event;
+            // ev.returnValue = "我在这些点东西"
+            if (this.rememberMe === false) {
                 localStorage.removeItem('token');
             }
         };
