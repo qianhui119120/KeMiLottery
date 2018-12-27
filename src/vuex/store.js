@@ -4,12 +4,17 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 import system from './Modules/system'
+import systemAccount from './Modules/systemAccount'
+
 export default new Vuex.Store({
   modules:{
-    system
+    system,systemAccount
   },
   state: {
-
+  
+  },
+  getters:{
+    
   },
   mutations: {
 

@@ -12,7 +12,7 @@ axios.interceptors.request.use(function (config) {
         const token = localStorage.getItem('token');
         // 设置token,检查用户的登录状态
         //在main.js里面查看详情
-        config.headers.common['Authorizaition'] = 'Bearer '+token;
+        config.headers.common['Authorization'] = 'Bearer '+token;
         return config;
     }, function (error) {
         return Promise.reject(error);
@@ -22,7 +22,7 @@ axios.interceptors.request.use(function (config) {
 //在响应拦截离,我们可以优先对4xx,5xx开头的状态吗进行处理
 //可以弹窗也可以跳转到指定的页面
 axios.interceptors.response.use(function (response) {
-    console.log(response);
+    // console.log(response);
     return response;
     }, function (error) {
         return Promise.reject(error);

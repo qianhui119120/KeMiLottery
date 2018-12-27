@@ -1,6 +1,6 @@
 <template>
-    <div id="main">
-        main 
+    <div id="lottery">
+        广告管理
     </div>
 </template>
 

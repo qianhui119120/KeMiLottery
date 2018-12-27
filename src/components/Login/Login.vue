@@ -70,7 +70,10 @@ export default {
                         if (resp.data.success == true) {
                             localStorage.setItem('token',resp.data.token);
                             //将用户的选择保存到本地,当用户下次打开的时候,默认上次的选择
-                            localStorage.setItem('isRemember',this.rememberMe)
+                            localStorage.setItem('isRemember',this.rememberMe);
+                            //将当前用户的信息存储到本地
+                            localStorage.setItem('accountInfo',JSON.stringify(resp.data.response));
+                            // console.log(resp.data.response);
                             /*  
                             *   console.log(this.$route)
                             *   如果用户从其他页面跳转过来登陆页面,登陆成功后根据query携带的参数跳转回原先的页面,
@@ -94,13 +97,13 @@ export default {
         //如果rememberMe为true,则将数据保存到本地,否则清空
         this.rememberMe = localStorage.getItem('isRemember')==='true'?true:false;
         
-        window.onbeforeunload = (ev)=> {
-            var ev = ev || window.event;
-            // ev.returnValue = "我在这些点东西"
-            if (this.rememberMe === false) {
-                localStorage.removeItem('token');
-            }
-        };
+        // window.onbeforeunload = (ev)=> {
+        //     var ev = ev || window.event;
+        //     // ev.returnValue = "我在这些点东西"
+        //     if (this.rememberMe === false) {
+        //         localStorage.removeItem('token');
+        //     }
+        // };
     },
 }
 </script>

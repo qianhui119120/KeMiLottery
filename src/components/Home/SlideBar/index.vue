@@ -1,44 +1,44 @@
 <template>
     <div id="slidebar">
          <el-menu
-        default-active="2"
+        default-active="1"
         class="el-menu-vertical-demo"
-        @open="handleOpen"
-        @close="handleClose"
         background-color="#545c64"
         text-color="#fff"
         active-text-color="#ffd04b">
-        <el-submenu index="1">
-            <template slot="title">
-            <i class="el-icon-location"></i>
-            <span>导航一</span>
-            </template>
-            <el-menu-item index="1-1">选项1</el-menu-item>
-            <el-menu-item index="1-2">选项2</el-menu-item>
-            <el-menu-item index="1-3">选项3</el-menu-item>
-        </el-submenu>
-        <el-submenu index="2">
-            <template slot="title">
-            <i class="el-icon-location"></i>
-            <span>导航二</span>
-            </template>
-            <el-menu-item index="2-1">选项1</el-menu-item>
-            <el-menu-item index="2-2">选项2</el-menu-item>
-            <el-menu-item index="2-3">选项3</el-menu-item>
-        </el-submenu>
+            <el-submenu v-for="(item,key) in accountPermissions" :index="key+' '" :key="item._id">
+                <template slot="title">
+                    <i class="el-icon-location"></i>
+                    <span @click="$router.push({name:item.permissionDesc})">{{item.permissionDesc}}</span>
+                </template>
+                <!-- 绑定的index 是上面index-这里元素的下标(插件里面的父子关系) -->
+                <el-menu-item :index="key+'-'+index" v-for="(child,index) in item.children"
+                :key="child._id" @click="$router.push({name:child.permissionDesc})">
+                    {{child.permissionDesc}}
+                </el-menu-item>
+            </el-submenu>  
         </el-menu>
     </div>
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
 export default {
+    computed:{
+        ...mapGetters(['accountPermissions'])
+    },
     methods:{
-        handleOpen(){},
-        handleClose(){}
+        
     }
 }
 </script>
 
 <style lang="scss" scoped>
-
+    #slidebar {
+        width: 100%;
+        height: 100%;
+        .el-menu {
+            border: none;
+        }
+    }
 </style>

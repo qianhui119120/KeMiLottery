@@ -9,7 +9,7 @@
                     <SlideBar/>
                 </el-aside>
                 <el-main>
-                    <Main/>
+                    <router-view/>
                 </el-main>
             </el-container>
         </el-container>
@@ -19,9 +19,8 @@
 <script>
 import Topbar from './TopBar'
 import SlideBar from './SlideBar'
-import Main from './Main'
 export default {
-    components:{Topbar,SlideBar,Main}
+    components:{Topbar,SlideBar}
 }
 </script>
 

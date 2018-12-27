@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router/router'
 import store from './vuex/store'
+import '@/mixins/mixin'
 
 //引入全局工具axios
 import './tools/axios'
@@ -13,6 +14,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(ElementUI)
 
 import 'reset-css'
+import '../node_modules/font-awesome/css/font-awesome.css'
 
 Vue.config.productionTip = false
 // console.log(process.env)
